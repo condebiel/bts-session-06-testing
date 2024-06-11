@@ -1,6 +1,6 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import FruitList from "./components/FruitList.vue";
+import HelloWorld from './components/HelloWorld.vue'
+import FruitList from './components/FruitList.vue'
 </script>
 
 <template>

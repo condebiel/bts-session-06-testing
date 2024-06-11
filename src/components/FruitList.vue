@@ -9,24 +9,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      fruits: ["apple", "banana", "orange"],
-    };
-  },
+<script setup>
+import { computed, ref } from "vue"
 
-  computed: {
-    numFruits() {
-      return this.fruits.length;
-    },
-  },
-  
-  methods: {
-    addFruit(newFruit) {
-      this.fruits.push(newFruit);
-    },
-  },
-};
+const fruits = ref(["apple", "banana", "orange"])
+
+const numFruits = computed(() => {
+  return fruits.value.length
+})
 </script>

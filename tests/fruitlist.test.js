@@ -4,25 +4,12 @@ import FruitList from '../src/components/FruitList.vue'
 describe('FruitList component test', () => {
     test("tests data attributes", () => {
         const wrapper = shallowMount(FruitList)
-        expect(wrapper.vm.fruits).toEqual(["apple", "banana", "orange"]);
+        expect(wrapper.vm.fruits).toEqual(["apple", "banana", "orange"])
     })
 
     test('return total number of fruits', () => {
         const wrapper = shallowMount(FruitList)
-        // expect(wrapper.vm.numFruits).toBe(2);
-        expect(wrapper.vm.numFruits).toBe(3);
-    })
-
-    test('tests addFruit method', () => {
-        const wrapper = shallowMount(FruitList)
-
-        const vm = wrapper.vm
-        expect(vm.fruits.length).toBe(3)
-
-        // add mango to the fruit list
-        vm.addFruit('mango')
-
-        expect(vm.fruits.length).toBe(4)
+        expect(wrapper.vm.numFruits).toBe(3)
     })
 
     test('displays a list of fruits', () => {
