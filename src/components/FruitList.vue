@@ -5,7 +5,10 @@
         {{ fruit }}
       </li>
     </ol>
-    <p>Number of fruits: {{ numFruits }}</p>
+    <p>Number of fruits: {{ numFruits }}</p>  
+
+    <input id="input" v-model="newFruit" placeholder="Add fruit" />
+    <button @click="addFruitToList(newFruit)">Add fruit</button>
   </div>
 </template>
 
@@ -13,8 +16,13 @@
 import { computed, ref } from "vue"
 
 const fruits = ref(["apple", "banana", "orange"])
+const newFruit = ref("")
 
 const numFruits = computed(() => {
   return fruits.value.length
 })
+
+const addFruitToList = (fruit) => {
+  fruits.value.push(fruit)
+}
 </script>

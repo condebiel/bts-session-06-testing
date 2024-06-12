@@ -1,5 +1,6 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, } from '@vue/test-utils'
 import FruitList from '../src/components/FruitList.vue'
+import { test } from 'vitest'
 
 describe('FruitList component test', () => {
     test("tests data attributes", () => {
@@ -10,6 +11,14 @@ describe('FruitList component test', () => {
     test('return total number of fruits', () => {
         const wrapper = shallowMount(FruitList)
         expect(wrapper.vm.numFruits).toBe(3)
+    })
+
+    test('return total number of fruits needs to be 4', () => {
+        const wrapper = shallowMount(FruitList)
+        // set data
+        wrapper.vm.addFruit('kiwi')
+
+        expect(wrapper.vm.numFruits).toBe(4)
     })
 
     test('displays a list of fruits', () => {
@@ -26,6 +35,7 @@ describe('FruitList component test', () => {
         const numFruits = wrapper.find('p')
         expect(numFruits.text()).toBe('Number of fruits: 3')
     })
+
 
 })
 

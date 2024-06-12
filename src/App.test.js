@@ -1,4 +1,4 @@
-import { render } from '@testing-library/vue'
+import { fireEvent, render, waitFor } from '@testing-library/vue'
 
 import App from './App.vue'
 
@@ -13,6 +13,20 @@ describe('App component', () => {
 		const { getByText } = render(App)
 		const fruit = getByText('apple')
 		expect(fruit).toBeInTheDocument()	
+	})
+
+	test('check if fruit is added', async () => {
+		const { getByPlaceholderText, getByText, getByRole } = render(App)
+		const input = getByPlaceholderText('Add fruit')
+		await fireEvent.update(input, 'kiwi' )
+
+		const button = getByRole('button')
+		button.click()
+
+		waitFor(() => {
+			const fruit = getByText('kiwi')
+			expect(fruit).toBeInTheDocument()
+		})
 	})
 
 	test('renders count of all elements', () => {
